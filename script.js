@@ -1,38 +1,36 @@
-var elementos = document.querySelectorAll('[type=radio]');
-var resCorreta = document.querySelector('.resCorr');
-var resErrada = document.querySelector('.resErr');
+var elementos = document.querySelectorAll("[type=radio]");
+var resCorreta = document.querySelector(".resCorr");
+var resErrada = document.querySelector(".resErr");
 var contadorCorreta = 0;
 var contadorErrada = 0;
 
+console.log("teste");
 
-for(var i = 0; i < elementos.length; i++){
-    elementos[i].addEventListener('change',function(e){
-        let marcado = e.target.value;
+for (var i = 0; i < elementos.length; i++) {
+  elementos[i].addEventListener("change", function (e) {
+    let marcado = e.target.value;
 
-
-        if(marcado == "correta"){
-          let parentNode = e.target.parentNode;
-          parentNode.style.backgroundColor = 'green';
-          let els = parentNode.parentNode.querySelectorAll('[type=radio]');
-          for(var n = 0; n < els.length; n++){
-            els[n].disabled = true;
-          }
-        contadorCorreta++;
-        resCorreta.innerHTML = contadorCorreta;
-
-
-        }else if(marcado == "incorreta"){  
-        let parentNode = e.target.parentNode;
-        parentNode.style.backgroundColor = 'red';
-        let els = parentNode.parentNode.querySelectorAll('[type=radio]');
-        for(var n = 0; n < els.length; n++){
-            els[n].disabled = true;
-        }
-        contadorErrada++;
-        resErrada.innerHTML = contadorErrada;
-        let correta = parentNode.parentNode.querySelector('[value=correta]');
-        correta.parentNode.style.backgroundColor = 'green';
-        correta.parentNode.style.opacity = 0.7;
-        }
-    })
+    if (marcado == "correta") {
+      let parentNode = e.target.parentNode;
+      parentNode.style.backgroundColor = "green";
+      let els = parentNode.parentNode.querySelectorAll("[type=radio]");
+      for (var n = 0; n < els.length; n++) {
+        els[n].disabled = true;
+      }
+      contadorCorreta++;
+      resCorreta.innerHTML = contadorCorreta;
+    } else if (marcado == "incorreta") {
+      let parentNode = e.target.parentNode;
+      parentNode.style.backgroundColor = "red";
+      let els = parentNode.parentNode.querySelectorAll("[type=radio]");
+      for (var n = 0; n < els.length; n++) {
+        els[n].disabled = true;
+      }
+      contadorErrada++;
+      resErrada.innerHTML = contadorErrada;
+      let correta = parentNode.parentNode.querySelector("[value=correta]");
+      correta.parentNode.style.backgroundColor = "green";
+      correta.parentNode.style.opacity = 0.7;
+    }
+  });
 }
